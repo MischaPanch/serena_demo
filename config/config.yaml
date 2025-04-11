@@ -1,0 +1,50 @@
+# Project Documentation Agent Configuration
+
+# Logging configuration
+logging:
+  level: INFO
+  file: project_documentation_agent.log
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Project settings
+project:
+  default_output_folder: "output"
+
+# Notion API settings
+notion:
+  jira_url_property: "jira-url"  # Property name in Notion containing Jira URL
+  search_depth: 2                # Maximum depth for retrieving linked pages
+
+# Google Drive settings
+gdrive:
+  file_types:
+    - "application/pdf"
+    - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    - "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    - "application/vnd.google-apps.document"
+    - "application/vnd.google-apps.spreadsheet"
+    - "application/vnd.google-apps.presentation"
+  max_files_to_fetch: 100  # Maximum number of files to retrieve from Drive
+  search_depth: 3          # Maximum folder depth to search
+
+# Jira settings
+jira:
+  include_statuses:
+    - "Done"
+    - "Closed"
+    - "Resolved"
+    - "Completed"
+  exclude_labels:
+    - "duplicate"
+    - "wontfix"
+    - "invalid"
+  max_issues_to_fetch: 200  # Maximum number of issues to retrieve
+
+# Summarization settings
+summarization:
+  model_name: "gpt-4"
+  temperature: 0.2
+  max_tokens: 2000
+  chunk_size: 4000
+  chunk_overlap: 200
